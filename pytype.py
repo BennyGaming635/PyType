@@ -24,7 +24,6 @@ sentences = {
     ]
 }
 
-# Function to clear the screen (works on Windows, macOS, and Linux)
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
@@ -83,7 +82,7 @@ def typing_with_distractions(sentence):
     user_input = ""
     for char in sentence:
         print(char, end="", flush=True)
-        time.sleep(random.uniform(0.05, 0.2))  # Simulate random delay
+        time.sleep(random.uniform(0.05, 0.2))
         if random.random() < 0.1:
             clear_screen()  # Screen flicker
             print("⚡ Whoops, screen glitch! Keep typing! ⚡\n")
@@ -179,7 +178,7 @@ def main():
             success = typing_speed_test(difficulty)
         elif choice == "4":
             daily_challenge()
-            success = True  # Daily challenge does not affect streak
+            success = True
         elif choice == "5":
             sentence = get_random_sentence("hard")
             success = typing_with_distractions(sentence)
@@ -196,7 +195,7 @@ def main():
             streak_count += 1
         else:
             print("\n😢 Accuracy below 80%. Streak reset. Keep practicing!")
-
+            streak_count = 0
         save_streak(streak_count)
 
 if __name__ == "__main__":
